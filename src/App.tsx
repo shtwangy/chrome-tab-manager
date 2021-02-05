@@ -5,13 +5,12 @@ const App = () => {
     const [title, setTitle] = useState<string>('')
     const [url, setUrl] = useState<string>('')
     useEffect(() => {
-        const queryInfo = {active: true, lastFocusedWindow: true};
-
-        chrome.tabs && chrome.tabs.query(queryInfo, tabs => {
+        chrome.tabs && chrome.tabs.query({currentWindow: true}, tabs => {
             const title = tabs[0].title;
             setTitle(title ? title : '')
             const url = tabs[0].url;
             setUrl(url ? url : '');
+            console.log(tabs)
         });
     }, []);
     return (
