@@ -1,8 +1,9 @@
 # Chrome Tab Manager
 ## Create Project
-1. CRA
+1. create react app and @types/chrome install
     ```
     $ npx create-react-app chrome-tab-manager --template typescript
+    $ yarn add @types/chrome -D
     ```
    
 2. Set up the manifest
