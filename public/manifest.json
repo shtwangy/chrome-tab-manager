@@ -4,8 +4,9 @@
   "description": "chrome extension to manage tabs",
   "manifest_version": 3,
   "action": {
-    "default_popup": "index.html",
-    "default_icon": "logo192.png"
+    "default_title": "Chrome Tab Manager",
+    "default_icon": "logo192.png",
+    "default_popup": "index.html"
   },
   "permissions":[
     "tabs"
