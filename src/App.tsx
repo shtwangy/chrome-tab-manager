@@ -1,10 +1,7 @@
 import {useState, useEffect} from "react";
 import './App.css';
-
-type Page = {
-    title: string | undefined;
-    url: string | undefined;
-}
+import {Page} from "./types/Page";
+import {PageListItem} from "./components";
 
 const App = () => {
     const [pages, setPages] = useState<Page[]>([])
@@ -17,10 +14,7 @@ const App = () => {
         <div className="app">
             {pages.length > 0 && (
                 pages.map((page) => (
-                    <div>
-                        <h3>{page.title}</h3>
-                        <p>{page.url}</p>
-                    </div>
+                    <PageListItem page={page} />
                 ))
             )}
         </div>
