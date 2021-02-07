@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import './App.css';
 import {Page} from "./types/Page";
-import {PageListItem} from "./components";
+import {PageList} from "./components";
 import mockPages from "./mock/mock";
 
 const App = () => {
@@ -14,11 +14,7 @@ const App = () => {
     }, []);
     return (
         <div className="app">
-            {pages.length > 0 && (
-                pages.map((page) => (
-                    <PageListItem page={page} />
-                ))
-            )}
+            <PageList pages={pages} />
         </div>
     );
 }
