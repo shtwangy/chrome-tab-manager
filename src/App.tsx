@@ -9,12 +9,25 @@ const App = () => {
     const [pages, setPages] = useState<Page[]>(mockPages) // mock fro dev
     useEffect(() => {
         chrome.tabs && chrome.tabs.query({currentWindow: true}, tabs => {
-            setPages(tabs.map(tab => {return {title: tab.title, url: tab.url}}))
+            console.log(tabs)
+            setPages(
+                tabs.map(tab => {
+                    return {
+                        id: tab.id,
+                        title: tab.title,
+                        url: tab.url
+                    }
+                })
+            )
         });
     }, []);
+
     return (
         <div className="app">
-            <PageList pages={pages} />
+            <PageList
+                pages={pages}
+                setPages={setPages}
+            />
         </div>
     );
 }
