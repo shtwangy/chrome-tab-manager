@@ -1,17 +1,48 @@
 import styled from "styled-components";
 
+export const StyledButton = styled.button`
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    padding: 8px;
+    outline: 0;
+    border-radius: 50%;
+    background-color: #424242;
+    color: #fff;
+    font-size: 1rem;
+    :hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+`
+
 export const StyledDiv = styled.div`
-  cursor: pointer;
-  padding: 8px 4px;
-  :hover {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
+    cursor: pointer;
+    padding: 8px 4px;
+    position: relative;
+    :hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+`
+
+export const StyledTextDiv = styled.div`
+    width: 340px;
+`
+
+export const StyledSecondaryActionDiv = styled.div`
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
 `
 
 export const StyledSpan = styled.span`
-  font-weight: bold;
+    width: 100%;
+    font-weight: bold;
+    word-wrap: break-word;
 `
 
 export const StyledP = styled.p`
-  margin: 0;
+    width: 100%;
+    margin: 0;
+    word-wrap: break-word;
 `
