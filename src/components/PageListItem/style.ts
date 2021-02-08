@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledButton = styled.button`
     border: 0;
     cursor: pointer;
-    margin: 0;
+    margin: 0 2px;
     padding: 8px;
     outline: 0;
     border-radius: 50%;
@@ -25,13 +25,13 @@ export const StyledDiv = styled.div`
 `
 
 export const StyledTextDiv = styled.div`
-    width: 340px;
+    width: 310px;
 `
 
 export const StyledSecondaryActionDiv = styled.div`
     position: absolute;
     top: 50%;
-    right: 16px;
+    right: 4px;
     transform: translateY(-50%);
 `
 
