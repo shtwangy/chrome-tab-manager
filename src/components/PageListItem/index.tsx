@@ -11,8 +11,11 @@ type Props = {
 
 const PageListItem = (props: Props) => {
     const {page, setPages} = props
+    const id = page.id
+    const clickListItemHandler = () => {
+        id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
+    }
     const deleteHandler = () => {
-        const id = page.id
         id !== undefined && chrome.tabs.remove(id, () => {
             setPages((prevPages: Page[]): Page[] => {
                 return prevPages.filter(page => page.id !== id)
@@ -21,7 +24,7 @@ const PageListItem = (props: Props) => {
     }
     return (
         <StyledDiv>
-            <StyledTextDiv>
+            <StyledTextDiv onClick={clickListItemHandler}>
                 <StyledSpan>{page.title}</StyledSpan>
                 <StyledP>{page.url}</StyledP>
             </StyledTextDiv>
