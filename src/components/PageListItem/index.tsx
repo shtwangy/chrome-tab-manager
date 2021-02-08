@@ -3,6 +3,7 @@ import {Page} from "../../types/Page";
 import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
+import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare"
 
 type Props = {
     page: Page,
@@ -12,6 +13,10 @@ type Props = {
 const PageListItem = (props: Props) => {
     const {page, setPages} = props
     const id = page.id
+    const shareUrl = ''
+    const payload = {
+        text: page.title + '\n' + page.url
+    }
     const clickListItemHandler = () => {
         id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
     }
@@ -22,6 +27,14 @@ const PageListItem = (props: Props) => {
             })
         });
     }
+    const shareHandler = () => {
+        fetch(shareUrl, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        }).then(() => {
+            alert('送信が完了しました！');
+        })
+    }
     return (
         <StyledDiv>
             <StyledTextDiv onClick={clickListItemHandler}>
@@ -31,6 +44,9 @@ const PageListItem = (props: Props) => {
             <StyledSecondaryActionDiv>
                 <StyledButton onClick={deleteHandler}>
                     <FontAwesomeIcon icon={faTrashAlt} fixedWidth />
+                </StyledButton>
+                <StyledButton onClick={shareHandler}>
+                    <FontAwesomeIcon icon={faShareSquare} fixedWidth />
                 </StyledButton>
             </StyledSecondaryActionDiv>
         </StyledDiv>
