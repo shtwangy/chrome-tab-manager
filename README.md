@@ -27,5 +27,5 @@
    `"build": "INLINE_RUNTIME_CHUNK=false react-scripts build"`
 
 ## Serve
-1. `chrome://extensions/`からアプリを追加する
-2. `yarn build`
+1. `yarn build`
+2. `chrome://extensions/`からアプリを追加する
