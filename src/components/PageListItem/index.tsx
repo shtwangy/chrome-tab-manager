@@ -1,6 +1,6 @@
 import {Dispatch, SetStateAction} from "react";
 import {Page} from "../../types/Page";
-import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledDiv, StyledP, StyledSpan} from "./style";
+import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
 import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare"
@@ -36,7 +36,7 @@ const PageListItem = (props: Props) => {
         })
     }
     return (
-        <StyledDiv>
+        <StyledListItemDiv>
             <StyledTextDiv onClick={clickListItemHandler}>
                 <StyledSpan>{page.title}</StyledSpan>
                 <StyledP>{page.url}</StyledP>
@@ -49,7 +49,7 @@ const PageListItem = (props: Props) => {
                     <FontAwesomeIcon icon={faShareSquare} fixedWidth />
                 </StyledButton>
             </StyledSecondaryActionDiv>
-        </StyledDiv>
+        </StyledListItemDiv>
     )
 }
 

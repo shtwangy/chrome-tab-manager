@@ -15,13 +15,15 @@ export const StyledButton = styled.button`
     }
 `
 
-export const StyledDiv = styled.div`
+export const StyledListItemDiv = styled.div`
     cursor: pointer;
     padding: 8px 4px;
     position: relative;
     :hover {
         background-color: rgba(255, 255, 255, 0.08);
     }
+    border: solid rgba(255, 255, 255, 0.12);
+    border-width: 1px 0;
 `
 
 export const StyledTextDiv = styled.div`
