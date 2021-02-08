@@ -44,5 +44,7 @@ export const StyledSpan = styled.span`
 export const StyledP = styled.p`
     width: 100%;
     margin: 0;
-    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 `
