@@ -22,7 +22,7 @@ export const StyledListItemDiv = styled.div`
     :hover {
         background-color: rgba(255, 255, 255, 0.08);
     }
-    border: solid rgba(255, 255, 255, 0.12);
+    border-bottom: solid rgba(255, 255, 255, 0.12);
     border-width: 1px 0;
 `
 
