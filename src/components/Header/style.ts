@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   padding: 8px;
 `
 
-export const StyledH3 = styled.h3`
+export const StyledH1 = styled.h1`
   margin: 0;
 `
 
