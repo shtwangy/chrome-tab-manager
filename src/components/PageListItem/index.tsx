@@ -3,7 +3,7 @@ import {Page} from "../../types/Page";
 import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
-import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare"
+import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt";
 
 type Props = {
     page: Page,
@@ -46,7 +46,7 @@ const PageListItem = (props: Props) => {
                     <FontAwesomeIcon icon={faTrashAlt} fixedWidth />
                 </StyledButton>
                 <StyledButton onClick={shareHandler}>
-                    <FontAwesomeIcon icon={faShareSquare} fixedWidth />
+                    <FontAwesomeIcon icon={faShareAlt} fixedWidth />
                 </StyledButton>
             </StyledSecondaryActionDiv>
         </StyledListItemDiv>
