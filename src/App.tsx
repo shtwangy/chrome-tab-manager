@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import './App.css';
 import {Page} from "./types/Page";
-import {PageList} from "./components";
+import {Header, PageList} from "./components";
 import mockPages from "./mock/mock";
 
 const App = () => {
@@ -25,6 +25,7 @@ const App = () => {
 
     return (
         <div className="app">
+            <Header />
             <PageList
                 pages={pages}
                 setPages={setPages}
