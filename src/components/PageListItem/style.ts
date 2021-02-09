@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
     background-color: #424242;
     color: #fff;
     font-size: 1rem;
-    :hover {
+    :hover, :focus {
         background-color: rgba(255, 255, 255, 0.1);
     }
 `
@@ -19,7 +19,7 @@ export const StyledListItemDiv = styled.div`
     cursor: pointer;
     padding: 8px 4px;
     position: relative;
-    :hover {
+    :hover, :focus {
         background-color: rgba(255, 255, 255, 0.08);
     }
     border-bottom: solid rgba(255, 255, 255, 0.12);
