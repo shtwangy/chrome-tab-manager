@@ -1,28 +1,28 @@
 import {Dispatch, SetStateAction, useRef} from "react";
-import {Page} from "../../types/Page";
+import {Tab} from "../../types/Tab";
 import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt";
 
 type Props = {
-    page: Page,
-    setPages: Dispatch<SetStateAction<Page[]>>
+    tab: Tab,
+    setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
 const PageListItem = (props: Props) => {
-    const {page, setPages} = props
-    const id = page.id
-    const shareUrl = ''
+    const {tab, setTabs} = props
+    const id = tab.id
+    const shareUrl = 'https://hooks.slack.com/services/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'
     const payload = {
-        text: page.title + '\n' + page.url
+        text: tab.title + '\n' + tab.url
     }
     const handleClickListItem = () => {
         id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
     }
     const handleDelete = () => {
         id !== undefined && chrome.tabs.remove(id, () => {
-            setPages((prevPages: Page[]): Page[] => {
+            setTabs((prevPages: Tab[]): Tab[] => {
                 return prevPages.filter(page => page.id !== id)
             })
         });
@@ -51,8 +51,8 @@ const PageListItem = (props: Props) => {
                 onBlur={handleTextDivOnBlur}
                 onKeyPress={handleClickListItem}
             >
-                <StyledSpan>{page.title}</StyledSpan>
-                <StyledP>{page.url}</StyledP>
+                <StyledSpan>{tab.title}</StyledSpan>
+                <StyledP>{tab.url}</StyledP>
             </StyledTextDiv>
             <StyledSecondaryActionDiv>
                 <StyledButton onClick={handleDelete}>

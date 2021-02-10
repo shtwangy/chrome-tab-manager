@@ -1,23 +1,23 @@
-import {Page} from "../../types";
+import {Tab} from "../../types";
 import {StyledDiv} from "./style"
 import {PageListItem} from "../index";
 import {Dispatch, SetStateAction} from "react";
 
 type Props = {
-    pages: Page[]
-    setPages: Dispatch<SetStateAction<Page[]>>
+    tabs: Tab[]
+    setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
 const PageList = (props: Props) => {
-    const {pages, setPages} = props
+    const {tabs, setTabs} = props
     return (
         <StyledDiv>
-            {pages.length > 0 && (
-                pages.map((page) => (
+            {tabs.length > 0 && (
+                tabs.map(tab => (
                     <PageListItem
-                        key={page.id}
-                        page={page}
-                        setPages={setPages}
+                        key={tab.id}
+                        tab={tab}
+                        setTabs={setTabs}
                     />
                 ))
             )}
