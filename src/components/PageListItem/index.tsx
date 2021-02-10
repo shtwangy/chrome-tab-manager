@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, SetStateAction, useRef} from "react";
 import {Page} from "../../types/Page";
 import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -35,9 +35,25 @@ const PageListItem = (props: Props) => {
             alert('送信が完了しました！');
         })
     }
+    const listItemDivRef = useRef<HTMLDivElement>(null)
+    const handleTextDivOnFocus = () => {
+        if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.08)'
+    }
+    const handleTextDivOnBlur = () => {
+        if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = ''
+    }
+    const handleTextDivOnKeyPress = () => {
+        clickListItemHandler()
+    }
     return (
-        <StyledListItemDiv>
-            <StyledTextDiv onClick={clickListItemHandler}>
+        <StyledListItemDiv ref={listItemDivRef}>
+            <StyledTextDiv
+                tabIndex={0}
+                onClick={clickListItemHandler}
+                onFocus={handleTextDivOnFocus}
+                onBlur={handleTextDivOnBlur}
+                onKeyPress={handleTextDivOnKeyPress}
+            >
                 <StyledSpan>{page.title}</StyledSpan>
                 <StyledP>{page.url}</StyledP>
             </StyledTextDiv>

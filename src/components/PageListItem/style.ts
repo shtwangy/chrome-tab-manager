@@ -19,15 +19,17 @@ export const StyledListItemDiv = styled.div`
     cursor: pointer;
     padding: 8px 4px;
     position: relative;
-    :hover, :focus {
+    :hover {
         background-color: rgba(255, 255, 255, 0.08);
     }
     border-bottom: solid rgba(255, 255, 255, 0.12);
     border-width: 1px 0;
+    outline: 0;
 `
 
 export const StyledTextDiv = styled.div`
     width: 310px;
+    outline: 0;
 `
 
 export const StyledSecondaryActionDiv = styled.div`
