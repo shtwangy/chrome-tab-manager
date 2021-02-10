@@ -17,17 +17,17 @@ const PageListItem = (props: Props) => {
     const payload = {
         text: page.title + '\n' + page.url
     }
-    const clickListItemHandler = () => {
+    const handleClickListItem = () => {
         id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
     }
-    const deleteHandler = () => {
+    const handleDelete = () => {
         id !== undefined && chrome.tabs.remove(id, () => {
             setPages((prevPages: Page[]): Page[] => {
                 return prevPages.filter(page => page.id !== id)
             })
         });
     }
-    const shareHandler = () => {
+    const handleShare = () => {
         fetch(shareUrl, {
             method: 'POST',
             body: JSON.stringify(payload)
@@ -42,26 +42,23 @@ const PageListItem = (props: Props) => {
     const handleTextDivOnBlur = () => {
         if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = ''
     }
-    const handleTextDivOnKeyPress = () => {
-        clickListItemHandler()
-    }
     return (
         <StyledListItemDiv ref={listItemDivRef}>
             <StyledTextDiv
                 tabIndex={0}
-                onClick={clickListItemHandler}
+                onClick={handleClickListItem}
                 onFocus={handleTextDivOnFocus}
                 onBlur={handleTextDivOnBlur}
-                onKeyPress={handleTextDivOnKeyPress}
+                onKeyPress={handleClickListItem}
             >
                 <StyledSpan>{page.title}</StyledSpan>
                 <StyledP>{page.url}</StyledP>
             </StyledTextDiv>
             <StyledSecondaryActionDiv>
-                <StyledButton onClick={deleteHandler}>
+                <StyledButton onClick={handleDelete}>
                     <FontAwesomeIcon icon={faTrashAlt} fixedWidth />
                 </StyledButton>
-                <StyledButton onClick={shareHandler}>
+                <StyledButton onClick={handleShare}>
                     <FontAwesomeIcon icon={faShareAlt} fixedWidth />
                 </StyledButton>
             </StyledSecondaryActionDiv>
