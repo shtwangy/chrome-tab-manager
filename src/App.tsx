@@ -1,4 +1,5 @@
-import {useState, useEffect, createContext} from "react";
+import {useState, useEffect} from "react";
+import './assets/style.css'
 import './App.css';
 import {Tab} from "./types/Tab";
 import {Header, PageList} from "./components";

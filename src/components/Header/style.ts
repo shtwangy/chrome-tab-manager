@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
 
 export const StyledH1 = styled.h1`
   margin: 0;
+  cursor: default;
 `
 
 export const StyledSecondaryActionDiv = styled.div`
