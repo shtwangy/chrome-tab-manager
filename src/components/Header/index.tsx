@@ -2,7 +2,7 @@ import {StyledHeader, StyledH1, StyledButton, StyledSecondaryActionDiv, StyledSu
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Header = () => {
     const [isBalloonOpen, setIsBalloonOpen] = useState(false)
@@ -11,23 +11,27 @@ const Header = () => {
     const settingButtonRef = useRef<HTMLButtonElement>(null)
     const settingBalloonRef = useRef<HTMLDivElement>(null)
 
-    const handleSettingButtonOnClick = () => {
+    const handleSettingButtonClick = () => {
         if (summaryRef.current) {
             summaryRef.current.click()
         }
     }
 
-    const handleDetailSummaryOnFocus = () => {
+    const handleDetailsToggle = () => {
+        setIsBalloonOpen(prevState => !prevState)
+    }
+
+    const handleDetailSummaryFocus = () => {
         if (settingButtonRef.current) {
             settingButtonRef.current.focus()
         }
     }
 
-    const handleClickAway = useCallback((e: MouseEvent) => {
+    const handleClickAway = (e: MouseEvent) => {
         if (settingBalloonRef.current && !settingBalloonRef.current.contains(e.target as Element) && detailsRef.current) {
             detailsRef.current.open = false
         }
-    }, [])
+    }
 
     useEffect(() => {
         if (isBalloonOpen) {
@@ -38,16 +42,14 @@ const Header = () => {
         }
     }, [isBalloonOpen])
 
-    const handleDetailsToggle = () => {
-        setIsBalloonOpen(prevState => !prevState)
-    }
+
     return (
         <StyledHeader>
-            <StyledH1>Tab Manager {isBalloonOpen ? 'true' : 'false'}</StyledH1>
+            <StyledH1>Tab Manager</StyledH1>
             <StyledSecondaryActionDiv>
                 <StyledDetails ref={detailsRef} onToggle={handleDetailsToggle}>
-                    <StyledSummary ref={summaryRef} onFocus={handleDetailSummaryOnFocus}>
-                        <StyledButton ref={settingButtonRef} onClick={handleSettingButtonOnClick}>
+                    <StyledSummary ref={summaryRef} onFocus={handleDetailSummaryFocus}>
+                        <StyledButton ref={settingButtonRef} onClick={handleSettingButtonClick}>
                             <FontAwesomeIcon icon={faCog} fixedWidth />
                         </StyledButton>
                     </StyledSummary>
