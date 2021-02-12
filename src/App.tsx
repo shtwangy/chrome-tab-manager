@@ -8,7 +8,7 @@ import {localStorageContext, useLocalStorage} from "./contexts/useLocalStorage";
 const App = () => {
     // const [pages, setPages] = useState<Tab[]>([])
     const [tabs, setTabs] = useState<Tab[]>(mockPages) // mock fro dev
-    const ctx = useLocalStorage()
+    const localStorage = useLocalStorage()
 
     useEffect(() => {
         chrome.tabs && chrome.tabs.query({currentWindow: true}, tabs => {
@@ -28,7 +28,7 @@ const App = () => {
 
     return (
         <div className="app">
-            <localStorageContext.Provider value={ctx}>
+            <localStorageContext.Provider value={localStorage}>
                 <Header />
                 <PageList
                     tabs={tabs}
