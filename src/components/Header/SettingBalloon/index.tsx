@@ -1,5 +1,5 @@
 import {Ref, forwardRef, FormEvent, useState, useContext, useEffect} from "react";
-import {StyledWrapDiv} from "./style";
+import {StyledWrapDiv, StyledContentDiv, StyledLabel, StyledTextInput, StyledSubmitInput, StyledTitle} from "./style";
 import {localStorageContext} from "../../../contexts/useLocalStorage";
 
 const SettingBalloon = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>) => {
@@ -17,18 +17,22 @@ const SettingBalloon = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>)
 
     return (
         <StyledWrapDiv ref={ref}>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Webhook URL:
-                    <input
-                        name='webhook-url-text'
-                        type='text'
-                        value={webhookUrlText}
-                        onChange={e => setWebhookUrlText(e.target.value)}
-                    />
-                </label>
-                <input type="submit" value="Update Setting" />
-            </form>
+            <StyledContentDiv>
+                <StyledTitle>Setting</StyledTitle>
+                <form onSubmit={handleSubmit}>
+                    <StyledLabel>
+                        Webhook URL
+                        <StyledTextInput
+                            name='webhook-url-text'
+                            type='text'
+                            value={webhookUrlText}
+                            onChange={e => setWebhookUrlText(e.target.value)}
+                        />
+                    </StyledLabel>
+                    <div className='module-spacer--extra-extra-small'></div>
+                    <StyledSubmitInput type="submit" value="Update Setting" />
+                </form>
+            </StyledContentDiv>
         </StyledWrapDiv>
     )
 })
