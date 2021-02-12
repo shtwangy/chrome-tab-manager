@@ -37,6 +37,8 @@ const PageListItem = (props: Props) => {
             body: JSON.stringify(payload)
         }).then(() => {
             alert('送信が完了しました！');
+        }).catch(err => {
+            alert(`送信に失敗しました... ${err}`);
         })
     }
 

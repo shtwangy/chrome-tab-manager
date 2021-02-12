@@ -13,7 +13,6 @@ const App = () => {
 
     useEffect(() => {
         chrome.tabs && chrome.tabs.query({currentWindow: true}, tabs => {
-            console.log(tabs)
             setTabs(
                 tabs.map(tab => {
                     return {
