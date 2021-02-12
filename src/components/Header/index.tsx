@@ -42,7 +42,6 @@ const Header = () => {
         }
     }, [isBalloonOpen])
 
-
     return (
         <StyledHeader>
             <StyledH1>Tab Manager</StyledH1>
