@@ -32,3 +32,25 @@ export const StyledButton = styled.button`
         background-color: rgba(255, 255, 255, 0.1);
     }
 `
+
+export const StyledSummary = styled.summary`
+  list-style: none;
+  ::-webkit-details-marker {
+    display: none;
+  }
+`
+
+export const StyledDetails = styled.details`
+  [open] > summary:before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    background: transparent;
+    background-color: black;
+  }
+`

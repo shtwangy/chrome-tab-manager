@@ -1,3 +1,11 @@
 .app {
   width: 400px;
 }
+
+Header {
+  z-index: 10;
+}
+
+PageList {
+  z-index: 1;
+}
