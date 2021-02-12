@@ -1,9 +1,10 @@
-import {Dispatch, SetStateAction, useRef} from "react";
+import {Dispatch, SetStateAction, useContext, useRef} from "react";
 import {Tab} from "../../types/Tab";
 import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
-import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt";
+import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt"
+import {localStorageContext} from "../../contexts/useLocalStorage"
 
 type Props = {
     tab: Tab,
@@ -13,13 +14,11 @@ type Props = {
 const PageListItem = (props: Props) => {
     const {tab, setTabs} = props
     const id = tab.id
-    const shareUrl = 'https://hooks.slack.com/services/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'
-    const payload = {
-        text: tab.title + '\n' + tab.url
-    }
+
     const handleClickListItem = () => {
         id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
     }
+
     const handleDelete = () => {
         id !== undefined && chrome.tabs.remove(id, () => {
             setTabs((prevPages: Tab[]): Tab[] => {
@@ -27,14 +26,20 @@ const PageListItem = (props: Props) => {
             })
         });
     }
+
+    const {webhookUrl} = useContext(localStorageContext)
+    const payload = {
+        text: tab.title + '\n' + tab.url
+    }
     const handleShare = () => {
-        fetch(shareUrl, {
+        fetch(webhookUrl, {
             method: 'POST',
             body: JSON.stringify(payload)
         }).then(() => {
             alert('送信が完了しました！');
         })
     }
+
     const listItemDivRef = useRef<HTMLDivElement>(null)
     const handleTextDivOnFocus = () => {
         if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.08)'
