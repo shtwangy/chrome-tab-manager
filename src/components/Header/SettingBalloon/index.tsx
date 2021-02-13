@@ -30,7 +30,7 @@ const SettingBalloon = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>)
                         />
                     </StyledLabel>
                     <div className='module-spacer--extra-extra-small'></div>
-                    <StyledSubmitInput type="submit" value="Update Setting" />
+                    <StyledSubmitInput type="submit" value="Update" />
                 </form>
             </StyledContentDiv>
         </StyledWrapDiv>

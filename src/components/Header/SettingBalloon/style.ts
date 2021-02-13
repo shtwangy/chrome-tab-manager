@@ -41,7 +41,9 @@ export const StyledSubmitInput = styled.input`
   border: 3px solid #238636;
   border-radius: 6px;
   cursor: pointer;
-  margin-left: 240px;
+  margin-left: 270px;
+  font-weight: 600;
+  padding: 5px 16px
 `
 
 export const StyledTitle = styled.h2`
