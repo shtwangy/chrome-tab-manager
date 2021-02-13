@@ -33,12 +33,20 @@ const Header = () => {
         }
     }
 
+    const handleFocusAway = (e: FocusEvent) => {
+        if (settingBalloonRef.current && !settingBalloonRef.current.contains(e.target as Element) && detailsRef.current) {
+            detailsRef.current.open = false
+        }
+    }
+
     useEffect(() => {
         if (isBalloonOpen) {
             document.addEventListener('click', handleClickAway)
+            document.addEventListener('focusin', handleFocusAway)
         }
         return () => {
             document.removeEventListener('click', handleClickAway)
+            document.removeEventListener('focusin', handleFocusAway)
         }
     }, [isBalloonOpen])
 
