@@ -8,7 +8,7 @@ type Props = {
     setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
-const PageList = (props: Props) => {
+const TabList = (props: Props) => {
     const {tabs, setTabs} = props
     return (
         <StyledDiv>
@@ -25,4 +25,4 @@ const PageList = (props: Props) => {
     )
 }
 
-export default PageList
+export default TabList

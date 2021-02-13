@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import './assets/style.css'
 import './App.css';
 import {Tab} from "./types/Tab";
-import {Header, PageList} from "./components";
+import {Header, TabList} from "./components";
 import mockPages from "./mock/mock";
 import {localStorageContext, useLocalStorage} from "./contexts/useLocalStorage";
 
@@ -30,7 +30,7 @@ const App = () => {
         <div className="app">
             <localStorageContext.Provider value={localStorage}>
                 <Header />
-                <PageList
+                <TabList
                     tabs={tabs}
                     setTabs={setTabs}
                 />
