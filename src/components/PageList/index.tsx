@@ -1,6 +1,6 @@
 import {Tab} from "../../types";
 import {StyledDiv} from "./style"
-import {PageListItem} from "../index";
+import {TabListItem} from "../index";
 import {Dispatch, SetStateAction} from "react";
 
 type Props = {
@@ -14,7 +14,7 @@ const PageList = (props: Props) => {
         <StyledDiv>
             {tabs.length > 0 && (
                 tabs.map(tab => (
-                    <PageListItem
+                    <TabListItem
                         key={tab.id}
                         tab={tab}
                         setTabs={setTabs}

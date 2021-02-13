@@ -11,7 +11,7 @@ type Props = {
     setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
-const PageListItem = (props: Props) => {
+const TabListItem = (props: Props) => {
     const {tab, setTabs} = props
     const id = tab.id
 
@@ -73,4 +73,4 @@ const PageListItem = (props: Props) => {
     )
 }
 
-export default PageListItem
+export default TabListItem
