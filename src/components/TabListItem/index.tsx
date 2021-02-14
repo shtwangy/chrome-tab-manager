@@ -1,10 +1,10 @@
 import {Dispatch, SetStateAction, useContext, useRef} from "react";
 import {Tab} from "../../types/Tab";
-import {StyledButton, StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt"
 import {localStorageContext} from "../../contexts/useLocalStorage"
+import {IconButton} from "../UIKit";
 
 type Props = {
     tab: Tab,
@@ -62,12 +62,8 @@ const TabListItem = (props: Props) => {
                 <StyledP>{tab.url}</StyledP>
             </StyledTextDiv>
             <StyledSecondaryActionDiv>
-                <StyledButton onClick={handleDelete}>
-                    <FontAwesomeIcon icon={faTrashAlt} fixedWidth />
-                </StyledButton>
-                <StyledButton onClick={handleShare}>
-                    <FontAwesomeIcon icon={faShareAlt} fixedWidth />
-                </StyledButton>
+                <IconButton icon={faTrashAlt} onClick={handleDelete} />
+                <IconButton icon={faShareAlt} onClick={handleShare} />
             </StyledSecondaryActionDiv>
         </StyledListItemDiv>
     )
