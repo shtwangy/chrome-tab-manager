@@ -1,8 +1,8 @@
-import {StyledHeader, StyledH1, StyledButton, StyledSecondaryActionDiv, StyledSummary, StyledDetails} from "./style";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {StyledHeader, StyledH1, StyledSecondaryActionDiv, StyledSummary, StyledDetails} from "./style";
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
 import {useEffect, useRef, useState} from "react";
+import {IconButton} from "../UIKit";
 
 const Header = () => {
     const [isBalloonOpen, setIsBalloonOpen] = useState(false)
@@ -56,9 +56,7 @@ const Header = () => {
             <StyledSecondaryActionDiv>
                 <StyledDetails ref={detailsRef} onToggle={handleDetailsToggle}>
                     <StyledSummary ref={summaryRef} onFocus={handleDetailSummaryFocus}>
-                        <StyledButton ref={settingButtonRef} onClick={handleSettingButtonClick}>
-                            <FontAwesomeIcon icon={faCog} fixedWidth />
-                        </StyledButton>
+                        <IconButton ref={settingButtonRef} icon={faCog} onClick={handleSettingButtonClick} />
                     </StyledSummary>
                     <SettingBalloon ref={settingBalloonRef}/>
                 </StyledDetails>
