@@ -19,21 +19,6 @@ export const StyledSecondaryActionDiv = styled.div`
     transform: translateY(-50%);
 `
 
-export const StyledButton = styled.button`
-    border: 0;
-    cursor: pointer;
-    margin: 0 2px;
-    padding: 8px;
-    outline: 0;
-    border-radius: 50%;
-    background-color: #8b4513;
-    color: #fff;
-    font-size: 1rem;
-    :hover, :focus {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-`
-
 export const StyledSummary = styled.summary`
   list-style: none;
   ::-webkit-details-marker {
