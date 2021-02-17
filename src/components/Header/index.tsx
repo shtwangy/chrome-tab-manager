@@ -1,11 +1,11 @@
-import {useCallback} from "react";
+import {memo, useCallback} from "react";
 import {StyledHeader, StyledH1, StyledSecondaryActionDiv, StyledSummary, StyledDetails} from "./style";
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
 import {useEffect, useRef, useState} from "react";
 import {IconButton} from "../UIKit";
 
-const Header = () => {
+const Header = memo(() => {
     const [isBalloonOpen, setIsBalloonOpen] = useState(false)
     const detailsRef = useRef<HTMLDetailsElement>(null)
     const summaryRef = useRef<HTMLElement>(null)
@@ -65,6 +65,6 @@ const Header = () => {
             </StyledSecondaryActionDiv>
         </StyledHeader>
     )
-}
+})
 
 export default Header
