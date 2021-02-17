@@ -1,3 +1,4 @@
+import {useCallback} from "react";
 import {StyledHeader, StyledH1, StyledSecondaryActionDiv, StyledSummary, StyledDetails} from "./style";
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
@@ -11,11 +12,11 @@ const Header = () => {
     const settingButtonRef = useRef<HTMLButtonElement>(null)
     const settingBalloonRef = useRef<HTMLDivElement>(null)
 
-    const handleSettingButtonClick = () => {
+    const handleSettingButtonClick = useCallback(() => {
         if (summaryRef.current) {
             summaryRef.current.click()
         }
-    }
+    }, [])
 
     const handleDetailsToggle = () => {
         setIsBalloonOpen(prevState => !prevState)
@@ -50,13 +51,14 @@ const Header = () => {
         }
     }, [isBalloonOpen])
 
+    console.log('render Header')
     return (
         <StyledHeader>
             <StyledH1>Tab Manager</StyledH1>
             <StyledSecondaryActionDiv>
                 <StyledDetails ref={detailsRef} onToggle={handleDetailsToggle}>
                     <StyledSummary ref={summaryRef} onFocus={handleDetailSummaryFocus}>
-                        <IconButton ref={settingButtonRef} icon={faCog} onClick={handleSettingButtonClick} />
+                        <IconButton ref={settingButtonRef} icon={faCog} onClick={handleSettingButtonClick} id={'setting balloon'}/>
                     </StyledSummary>
                     <SettingBalloon ref={settingBalloonRef}/>
                 </StyledDetails>
