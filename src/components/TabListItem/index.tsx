@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useContext, useRef} from "react";
+import {Dispatch, SetStateAction, useCallback, useContext, useRef, memo} from "react";
 import {Tab} from "../../types/Tab";
 import {StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
@@ -11,7 +11,7 @@ type Props = {
     setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
-const TabListItem = (props: Props) => {
+const TabListItem = memo((props: Props) => {
     const {tab, setTabs} = props
     const id = tab.id
 
@@ -19,19 +19,19 @@ const TabListItem = (props: Props) => {
         id !== undefined && chrome.tabs.update(id, { 'active': true }, (tab) => {});
     }
 
-    const handleDelete = () => {
+    const handleDelete = useCallback(() => {
         id !== undefined && chrome.tabs.remove(id, () => {
             setTabs((prevPages: Tab[]): Tab[] => {
                 return prevPages.filter(page => page.id !== id)
             })
         });
-    }
+    }, [])
 
     const {webhookUrl} = useContext(localStorageContext)
     const payload = {
         text: tab.title + '\n' + tab.url
     }
-    const handleShare = () => {
+    const handleShare = useCallback(() => {
         fetch(webhookUrl, {
             method: 'POST',
             body: JSON.stringify(payload)
@@ -40,7 +40,7 @@ const TabListItem = (props: Props) => {
         }).catch(err => {
             alert(`送信に失敗しました... ${err}`);
         })
-    }
+    },[])
 
     const listItemDivRef = useRef<HTMLDivElement>(null)
     const handleTextDivOnFocus = () => {
@@ -49,6 +49,7 @@ const TabListItem = (props: Props) => {
     const handleTextDivOnBlur = () => {
         if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = ''
     }
+    console.log('render Tab List Item')
     return (
         <StyledListItemDiv ref={listItemDivRef}>
             <StyledTextDiv
@@ -62,11 +63,11 @@ const TabListItem = (props: Props) => {
                 <StyledP>{tab.url}</StyledP>
             </StyledTextDiv>
             <StyledSecondaryActionDiv>
-                <IconButton icon={faTrashAlt} onClick={handleDelete} />
-                <IconButton icon={faShareAlt} onClick={handleShare} />
+                <IconButton icon={faTrashAlt} onClick={handleDelete} id={tab.title ? tab.title : ''}/>
+                <IconButton icon={faShareAlt} onClick={handleShare} id={tab.title ? tab.title : ''}/>
             </StyledSecondaryActionDiv>
         </StyledListItemDiv>
     )
-}
+});
 
 export default TabListItem
