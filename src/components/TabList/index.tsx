@@ -1,15 +1,10 @@
-import {Tab} from "../../types";
 import {StyledDiv} from "./style"
 import {TabListItem} from "../index";
-import {Dispatch, SetStateAction} from "react";
+import {useTabs} from "../../hooks";
 
-type Props = {
-    tabs: Tab[]
-    setTabs: Dispatch<SetStateAction<Tab[]>>
-}
-
-const TabList = (props: Props) => {
-    const {tabs, setTabs} = props
+const TabList = () => {
+    const {tabs, setTabs} = useTabs()
+    console.log('render TabList')
     return (
         <StyledDiv>
             {tabs.length > 0 && (
