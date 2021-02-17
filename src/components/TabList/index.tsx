@@ -1,8 +1,9 @@
 import {StyledDiv} from "./style"
 import {TabListItem} from "../index";
 import {useTabs} from "../../hooks";
+import {memo} from "react";
 
-const TabList = () => {
+const TabList = memo(() => {
     const {tabs, setTabs} = useTabs()
     console.log('render TabList')
     return (
@@ -18,6 +19,6 @@ const TabList = () => {
             )}
         </StyledDiv>
     )
-}
+})
 
 export default TabList
