@@ -3,7 +3,7 @@ import {StyledHeader, StyledH1, StyledSecondaryActionDiv, StyledSummary, StyledD
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
 import {useEffect, useRef, useState} from "react";
-import {IconButton} from "../UIKit";
+import {IconButton, SecondaryActionContainer} from "../UIKit";
 
 const Header = memo(() => {
     const [isBalloonOpen, setIsBalloonOpen] = useState(false)
@@ -18,27 +18,27 @@ const Header = memo(() => {
         }
     }, [])
 
-    const handleDetailsToggle = () => {
+    const handleDetailsToggle = useCallback(() => {
         setIsBalloonOpen(prevState => !prevState)
-    }
+    }, [])
 
-    const handleDetailSummaryFocus = () => {
+    const handleDetailSummaryFocus = useCallback(() => {
         if (settingButtonRef.current) {
             settingButtonRef.current.focus()
         }
-    }
+    }, [])
 
-    const handleClickAway = (e: MouseEvent) => {
+    const handleClickAway = useCallback((e: MouseEvent) => {
         if (settingBalloonRef.current && !settingBalloonRef.current.contains(e.target as Element) && detailsRef.current) {
             detailsRef.current.open = false
         }
-    }
+    }, [])
 
-    const handleFocusAway = (e: FocusEvent) => {
+    const handleFocusAway = useCallback((e: FocusEvent) => {
         if (settingBalloonRef.current && !settingBalloonRef.current.contains(e.target as Element) && detailsRef.current) {
             detailsRef.current.open = false
         }
-    }
+    }, [])
 
     useEffect(() => {
         if (isBalloonOpen) {
@@ -55,14 +55,14 @@ const Header = memo(() => {
     return (
         <StyledHeader>
             <StyledH1>Tab Manager</StyledH1>
-            <StyledSecondaryActionDiv>
+            <SecondaryActionContainer>
                 <StyledDetails ref={detailsRef} onToggle={handleDetailsToggle}>
                     <StyledSummary ref={summaryRef} onFocus={handleDetailSummaryFocus}>
                         <IconButton ref={settingButtonRef} icon={faCog} onClick={handleSettingButtonClick} id={'setting balloon'}/>
                     </StyledSummary>
                     <SettingBalloon ref={settingBalloonRef}/>
                 </StyledDetails>
-            </StyledSecondaryActionDiv>
+            </SecondaryActionContainer>
         </StyledHeader>
     )
 })
