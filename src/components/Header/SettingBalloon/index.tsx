@@ -1,8 +1,8 @@
-import {Ref, forwardRef, FormEvent, useState, useContext, useEffect} from "react";
+import {Ref, forwardRef, FormEvent, useState, useContext, useEffect, memo} from "react";
 import {StyledWrapDiv, StyledContentDiv, StyledLabel, StyledTextInput, StyledSubmitInput, StyledTitle} from "./style";
 import {localStorageContext} from "../../../contexts/useLocalStorage";
 
-const SettingBalloon = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>) => {
+const SettingBalloon = memo(forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>) => {
     const [webhookUrlText, setWebhookUrlText] = useState('')
     const {webhookUrl, updateWebhookUrl} = useContext(localStorageContext)
 
@@ -35,6 +35,6 @@ const SettingBalloon = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>)
             </StyledContentDiv>
         </StyledWrapDiv>
     )
-})
+}))
 
 export default SettingBalloon
