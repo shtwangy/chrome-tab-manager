@@ -1,10 +1,10 @@
 import {Dispatch, SetStateAction, useCallback, useContext, useRef, memo} from "react";
 import {Tab} from "../../types/Tab";
-import {StyledTextDiv, StyledSecondaryActionDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
+import {StyledTextDiv, StyledListItemDiv, StyledP, StyledSpan} from "./style";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons/faShareAlt"
 import {localStorageContext} from "../../contexts/useLocalStorage"
-import {IconButton} from "../UIKit";
+import {IconButton, SecondaryActionContainer} from "../UIKit";
 
 type Props = {
     tab: Tab,
@@ -62,10 +62,10 @@ const TabListItem = memo((props: Props) => {
                 <StyledSpan>{tab.title}</StyledSpan>
                 <StyledP>{tab.url}</StyledP>
             </StyledTextDiv>
-            <StyledSecondaryActionDiv>
+            <SecondaryActionContainer>
                 <IconButton icon={faTrashAlt} onClick={handleDelete} id={tab.title ? tab.title : ''}/>
                 <IconButton icon={faShareAlt} onClick={handleShare} id={tab.title ? tab.title : ''}/>
-            </StyledSecondaryActionDiv>
+            </SecondaryActionContainer>
         </StyledListItemDiv>
     )
 });
