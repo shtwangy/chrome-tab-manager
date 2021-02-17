@@ -12,13 +12,6 @@ export const StyledH1 = styled.h1`
   cursor: default;
 `
 
-export const StyledSecondaryActionDiv = styled.div`
-    position: absolute;
-    top: 50%;
-    right: 4px;
-    transform: translateY(-50%);
-`
-
 export const StyledSummary = styled.summary`
   list-style: none;
   ::-webkit-details-marker {

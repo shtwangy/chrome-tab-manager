@@ -1,5 +1,5 @@
 import {memo, useCallback} from "react";
-import {StyledHeader, StyledH1, StyledSecondaryActionDiv, StyledSummary, StyledDetails} from "./style";
+import {StyledHeader, StyledH1, StyledSummary, StyledDetails} from "./style";
 import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 import SettingBalloon from "./SettingBalloon";
 import {useEffect, useRef, useState} from "react";
