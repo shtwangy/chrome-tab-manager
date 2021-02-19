@@ -35,12 +35,13 @@ const TabListItem = memo((props: Props) => {
         fetch(webhookUrl, {
             method: 'POST',
             body: JSON.stringify(payload)
-        }).then(() => {
-            alert('送信が完了しました！');
+        }).then(res => {
+            if (res.status !== 200) throw Error(res.statusText)
+            alert('送信が完了しました！[' + webhookUrl + ']');
         }).catch(err => {
-            alert(`送信に失敗しました... ${err}`);
+            alert(`送信に失敗しました...\n${err}`);
         })
-    },[])
+    },[webhookUrl])
 
     const listItemDivRef = useRef<HTMLDivElement>(null)
     const handleTextDivOnFocus = () => {
