@@ -37,7 +37,7 @@ const TabListItem = memo((props: Props) => {
             body: JSON.stringify(payload)
         }).then(res => {
             if (res.status !== 200) throw Error(res.statusText)
-            alert('送信が完了しました！[' + webhookUrl + ']');
+            alert('送信が完了しました！');
         }).catch(err => {
             alert(`送信に失敗しました...\n${err}`);
         })
