@@ -5,7 +5,6 @@ import {memo} from "react";
 
 const TabList = memo(() => {
     const {tabs, setTabs} = useTabs()
-    console.log('render TabList')
     return (
         <StyledDiv>
             {tabs.length > 0 && (
