@@ -5,8 +5,6 @@ import {localStorageContext, useLocalStorage} from "./contexts/useLocalStorage";
 
 const App = () => {
     const localStorage = useLocalStorage()
-
-    console.log('render App')
     return (
         <div className="app">
             <localStorageContext.Provider value={localStorage}>
