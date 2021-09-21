@@ -11,8 +11,7 @@ type Props = {
     setTabs: Dispatch<SetStateAction<Tab[]>>
 }
 
-const TabListItem = memo((props: Props) => {
-    const {tab, setTabs} = props
+const TabListItem = memo(({tab, setTabs}: Props) => {
     const id = tab.id
 
     const handleClickListItem = () => {
