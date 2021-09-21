@@ -49,7 +49,6 @@ const TabListItem = memo(({tab, setTabs}: Props) => {
     const handleTextDivOnBlur = () => {
         if (listItemDivRef.current) listItemDivRef.current.style.backgroundColor = ''
     }
-    console.log('render Tab List Item')
     return (
         <StyledListItemDiv ref={listItemDivRef}>
             <StyledTextDiv
