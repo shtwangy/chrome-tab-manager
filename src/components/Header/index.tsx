@@ -51,7 +51,6 @@ const Header = memo(() => {
         }
     }, [isBalloonOpen])
 
-    console.log('render Header')
     return (
         <StyledHeader>
             <StyledH1>Tab Manager</StyledH1>
